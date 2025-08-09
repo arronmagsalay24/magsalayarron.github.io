@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Milk Tea Shop</title>
+   <!-- CSS link -->
+   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Swiper CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    :root {
+      --primary-color: #000000;
+      --secondary-color: #d6a47f;
+      --accent-color: #ffd9c0;
+      --white-color: #ffffff;
+      --text-color: #fce8d5;
+      --highlight-color: #8b3a3a;
+      --order-now-color: #ff6347;
+      --contact-now-color: #32cd32;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--primary-color);
+      color: var(--text-color);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    header {
+      background: var(--primary-color);
+      padding: 1rem 2rem;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-logo .logo {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--primary-color);
+      font-weight: 600;
+      transition: color 0.3s ease, transform 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+    }
+
+    .nav-link:hover {
+      color: var(--white-color);
+      background-color: var(--highlight-color);
+      transform: scale(1.1);
+    }
+
+    .nav-link:active {
+      transform: scale(1);
+    }
+
+    .hero-section {
+      background: url('pngtree-milk-tea-tea-drink-black-tea-milk-background-picture-image_2444076.jpg') no-repeat center center / cover;
+  padding: 3rem 1.5rem;
+  border-radius: 20px;
+  color: #2e2e2e;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 4rem 2rem;
+  background-color: #fffaf6; /* soft creamy background */
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-content {
+      flex: 1 1 50%;
+      text-align: left;
+    }
+
+    .hero-section .title {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: bold;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeIn 2s forwards, slideUp 1s forwards;
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-section .subtitle {
+      font-size: 1.5rem;
+      color: var(--text-color);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeIn 2s 0.5s forwards;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      color: var(--text-color);
+    }
+
+    .button {
+      display: inline-block;
+      margin: 1rem 0.5rem 0 0;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .button:hover {
+      background-color: var(--highlight-color);
+      color: var(--white-color);
+      transform: scale(1.05);
+    }
+
+    .order-now {
+      background-color: var(--order-now-color);
+      color: var(--white-color);
+    }
+
+    .contact-now {
+      background-color: var(--contact-now-color);
+      color: var(--white-color);
+    }
+
+    .hero-image-wrapper {
+      flex: 1 1 30%;
+      max-width: 300px;
+      margin: 20px;
+      animation: fadeIn 2s 1s forwards;
+    }
+
+    @media screen and (max-width: 768px) {
+      .hero-section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .section-content, .hero-image-wrapper {
+        flex: 1 1 100%;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @media screen and (max-width: 2000px) {
+      .navbar :where(#menu-close-button, #menu-open-button) {
+        font-size: 1.5rem;
+      }
+
+      .navbar #menu-close-button {
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        color: white;
+      }
+
+      .navbar #menu-open-button {
+        color: var(--white-color);
+      }
+
+      .navbar .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        width: 300px;
+        height: 100%;
+        flex-direction: column;
+        background-image: url('9f5982404855df6254b39acd3c230720.jpg');
+        background-size: cover;
+        background-position: center;
+        align-items: center;
+        padding-top: 100px;
+        transition: left 0.4s ease;
+        z-index: 1000;
+      }
+
+      .navbar .nav-menu.show {
+        left: 0;
+      }
+
+      .navbar .nav-menu::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+      }
+
+      .navbar .nav-menu .nav-link {
+        color: var(--white-color);
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding: 0.75rem;
+        text-align: center;
+        z-index: 1;
+      }
+
+      .navbar .nav-menu .nav-link:hover {
+        color: var(--accent-color);
+        background-color: rgba(0, 0, 0, 0.6);
+        transform: scale(1.1);
+      }
+    }
+
+    .about-container {
+      background: url('background menu yarn.jpg') no-repeat center center / cover;
+  padding: 3rem 1.5rem;
+  border-radius: 20px;
+  color: #2e2e2e;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-container {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+.about-container h2 {
+  font-family: 'Lobster', cursive;
+  font-size: 2.5rem;
+  color: #b76e79; /* a nice milk-tea inspired pinkish tone */
+}
+
+.about-container p {
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+/* Menu Section to ha */
+
+
+.menu .heading {
+  font-size: 3rem;
+  color: #5e4033;
+  margin-bottom: 40px;
+}
+
+.menu .heading span {
+  color: #d87d4a;
+}
+
+.menu-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.menu-box {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.menu-box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.menu-box h3 {
+  font-size: 1.5rem;
+  color: #4e2e1c;
+  margin: 10px 0;
+}
+
+.menu-box p {
+  font-size: 0.95rem;
+  color: #7a5c4f;
+  margin-bottom: 10px;
+}
+
+.menu-box span {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #d87d4a;
+}
+
+    .about-image {
+      flex: 1 1 40%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .about-image img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid var(--accent-color);
+    }
+
+    .about-text {
+      flex: 1 1 55%;
+      padding: 1rem;
+    }
+
+    .about-text h2 {
+      color: var(--highlight-color);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    @media screen and (max-width: 768px) {
+      .about-container {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .about-image {
+        margin-bottom: 2rem;
+      }
+    }
+
+    #menu-open-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1100;
+      font-size: 2rem;
+      background-color: transparent;
+      color: var(--white-color);
+      border: none;
+      display: block;
+    }
+
+    .social-link {
+      font-size: 2rem;
+      color: var(--primary-color);
+      transition: color 0.3s ease;
+    }
+
+    .social-link:hover { color: var(--highlight-color); }
+    .social-link[href*="facebook"]:hover { color: #1877f2; }
+    .social-link[href*="youtube"]:hover { color: #ff0000; }
+    .social-link[href*="instagram"]:hover { color: #e1306c; }
+
+    .testimonials-section {
+      background: url('background menu yarn.jpg') no-repeat center center / cover;
+  padding: 3rem 1.5rem;
+  border-radius: 20px;
+  color: #2e2e2e;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+      font-family: 'Quicksand', sans-serif;
+      color: black;
+      background-color: var(--white-color);
+      padding: 2rem 3rem;
+      text-align: center;
+      border-radius: 20px;
+      margin: 2rem auto;
+    }
+
+    .testimonials-section .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--highlight-color);
+    }
+
+    .user-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--highlight-color);
+  margin-top: 1rem;
+  
+}
+.section-title {
+  font-family: 'Lobster', cursive;
+}
+.name{
+  font-family: 'DM Serif Display', serif;
+
+}
+.testimonials{
+  display: flex;
+  flex-direction: column;
+  align-items: center;   
+  text-align: center;
+}
+.rating-stars {
+  color: var(--highlight-color); /* Keeps it on-brand */
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.menu-section {
+  color: var(--white-color);  
+  background-color: var(--dark-color); 
+}
+
+  /* MENU SECTION styling! */
+  .menu-section {
+    background: url('photo-1594489556673-c816408242f5.jpg') no-repeat center center / cover;
+  padding: 3rem 1.5rem;
+  border-radius: 20px;
+  color: #2e2e2e;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 4rem 2rem;
+  background-color: #fffaf6; /* soft creamy background */
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  font-family: 'Lobster', cursive;
+  color: #a0522d;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #a0522d;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.menu-section .menu-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  justify-content: center;
+}
+
+.menu-section .menu-list .menu-item {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  width: 300px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.menu-section .menu-list .menu-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.menu-section .menu-list .menu-item .menu-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.menu-section .menu-list .menu-item:hover .menu-image {
+  transform: scale(1.05);
+}
+
+.menu-section .menu-list .menu-item .menu-title {
+  font-size: 1.4rem;
+  font-family: 'DM Serif Display', serif;
+  color: #5a4032;
+  margin: 10px 0;
+}
+
+.menu-section .menu-list .menu-item .text {
+  font-size: 1rem;
+  color: #6d4c41;
+  font-family: 'Quicksand', sans-serif;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+  .menu-section .menu-list {
+    gap: 40px;
+  }
+
+  .menu-section .menu-list .menu-item {
+    width: 80%;
+  }
+}
+.menu-list {
+  .menu-list {
+  /* remove flex & wrap since swiper handles layout */
+  display: block;
+  padding-bottom: 3rem; /* space for pagination */
+}
+
+.menu-item {
+  width: auto; /* let swiper control width */
+  margin: 0 auto;
+  max-width: 300px;
+}
+.menu-item {
+  width: auto; /* let swiper control width */
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+}
+.menu-order {
+  background-color: #fbe6d4; /* Milk tea-inspired base */
+  padding: 3rem 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  color: #2e2e2e;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+}
+.menu-order {
+   
+  background: url('photo-1594489556673-c816408242f5.jpg') no-repeat center center / cover;
+  padding: 3rem 1.5rem;
+  border-radius: 20px;
+  color: #2e2e2e;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.order-box {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 25px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.order-box:hover {
+  transform: translateY(-5px);
+}
+
+.order-box h2,
+.order-box h3 {
+  font-family: 'DM Serif Display', serif;
+  color: #a0522d; /* Warm milk tea brown */
+  margin-bottom: 1rem;
+}
+
+.order-box label {
+  font-size: 1rem;
+  display: block;
+  margin: 0.75rem 0 0.3rem;
+  color: #5a4032;
+}
+
+.order-box select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #fffaf6;
+  transition: border-color 0.2s;
+}
+
+.order-box select:focus {
+  border-color: #a0522d;
+  outline: none;
+}
+
+.order-button {
+  background-color: #a0522d; /* Milk tea brown */
+  color: white;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.order-button:hover {
+  background-color: #8b4513;
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .order-box {
+    padding: 1.5rem;
+  }
+}
+
+  #portfolio {
+    background: url('photo-1594489556673-c816408242f5.jpg') no-repeat center center / cover;
+  padding: 3rem 1.5rem;
+  border-radius: 20px;
+  color: #2e2e2e;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 6rem 0;
+  color: #fff;
+  font-family: 'Poppins', sans-serif; /* Modern font for a fresh look */
+}
+
+#portfolio h2 {
+  text-align: center;
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.portfolio-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid layout */
+  gap: 2rem;
+  padding: 0 2rem;
+  justify-items: center;
+}
+
+.portfolio-card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 2.5rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Softer, more subtle shadow for a friendly feel */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-15px); /* Slight lift on hover */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Larger shadow for emphasis */
+}
+
+.portfolio-card h3 {
+  font-size: 2.2rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.portfolio-card p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+.portfolio-card ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 1rem;
+  color: #555;
+}
+
+.portfolio-card blockquote {
+  font-style: italic;
+  background: #f0e6d2; /* Soft background color for quotes */
+  padding: 1.5rem;
+  border-left: 6px solid #ff7f50; /* Accent color for quotes */
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.portfolio-card a {
+  color: #ff7f50; /* Warm accent color for links */
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.portfolio-card a:hover {
+  color: #fff; /* White color on hover for contrast */
+  text-decoration: underline;
+}
+
+/* Add smooth transition for portfolio card hover */
+.portfolio-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3); /* Light transparent overlay */
+  border-radius: 15px;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.portfolio-card:hover::after {
+  opacity: 1; /* Show overlay on hover */
+}
+
+@media (max-width: 768px) {
+  .portfolio-container {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
+}
+
+.blog-container {
+  background: url('photo-1594489556673-c816408242f5.jpg') no-repeat center center / cover;
+  padding: 3rem 1.5rem;
+  border-radius: 20px;
+  color: #2e2e2e;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.blog-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.blog-content {
+  padding: 1.5rem;
+}
+
+.blog-content h3 {
+  font-size: 1.4rem;
+  color: #4b2c20;
+  margin-bottom: 0.5rem;
+}
+
+.blog-content .date {
+  font-size: 0.9rem;
+  color: #999;
+  margin-bottom: 1rem;
+}
+
+.blog-content p {
+  font-size: 1rem;
+  color: #444;
+}
+
+.blog-content a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #b85c38;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.blog-content a:hover {
+  color: #7a3e1d;
+}
+
+.contact-container {
+  background: url('using-laptop-show-icon-address-600nw-2521386695.webp') no-repeat center center / cover;
+  padding: 3rem 1.5rem;
+  border-radius: 20px;
+  color: #2e2e2e;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 2rem;
+  color: #4b2c20;
+  margin-bottom: 0.5rem;
+}
+
+.contact-subtitle {
+  font-size: 1rem;
+  color: #5f4b32;
+  margin-bottom: 2rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.9rem 1rem;
+  border: 1px solid #e3d8ce;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #fdfdfd;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #b85c38;
+  box-shadow: 0 0 6px rgba(184, 92, 56, 0.3);
+}
+
+.contact-form button {
+  padding: 0.9rem;
+  background-color: #b85c38;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #7a3e1d;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="#" class="nav-logo">
+        <h2 class="logo">🥤Boba & Brew</h2>
+      </a>
+      <ul class="nav-menu">
+        <button id="menu-close-button" class="fas fa-times"></button>
+        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
+        <li class="nav-item"><a href="#menu" class="nav-link">Menu</a></li>
+        <li class="nav-item"><a href="#blog" class="nav-link">Blog/News Section</a></li>
+        <li class="nav-item"><a href="#tae" class="nav-link">Contact</a></li>
+      </ul>
+      <button id="menu-open-button" class="fas fa-bars"></button>
+
+    </nav>
+  </header>
+
+  <main>
+   <section id="home" class="hero-section">
+      <div class="section-content">
+        <h2 class="title">BEST MILKTEA</h2>
+        <h3 class="subtitle">Make your day great with our special Milktea!</h3>
+        <p class="description">
+          At BOBA & BREW, we believe every cup tells a story. Whether you're craving a classic brown sugar milk tea,
+          a refreshing fruit blend, or something new and exciting, we’ve got the perfect brew for you.
+        </p>
+        <a href="#menuorder" class="button order-now" target="_blank">Order Now!</a>
+        <a href="#" class="button contact-now">Contact Now!</a>
+      </div>
+      
+    </section>
+
+    <section id="about" class="about-container">
+      <div class="about-text">
+        <h2>ABOUT US</h2>
+      
+        <p>
+          Welcome to <strong>BOBA & BREW COMPANY!</strong><br>
+          Your go-to destination for refreshing and flavorful milk teas! Founded in 2025, we are passionate about delivering high-quality beverages made with the finest ingredients. Whether you're a bubble tea enthusiast or trying it for the first time, we've got something just for you!<br><br>
+            At BOBA & BREW COMPANY, we believe that enjoying a delicious milk tea shouldn’t break the bank. Our drinks are not only <em>masarap</em> (delicious) but also <em>sobrang affordable</em>, so everyone can indulge in their favorite treats without any worries. Each drink is carefully crafted to ensure the perfect balance of flavors, sweetness, and creaminess in every sip.
+        </p>
+        <a href="https://www.facebook.com/arron.magsalay.2024" class="social-link"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.youtube.com/@arronmagsalay3305" class="social-link"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/" class="social-link"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="about-image">
+        <img src="491351630_668640372788957_5502109245235227101_n.jpg" alt="Boba tea" />
+      </div>
+    </section>
+
+   <!-- Testimonials Section -->
+<section id="testimonials" class="testimonials-section">
+  <h2 class="section-title">CUSTOMER TESTIMONIALS</h2>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <!-- Testimonial Slides -->
+      <div class="swiper-slide testimonial">
+        <img class="user-image" src="491384651_2112041099261114_8960747571193465128_n.jpg" alt="Ej Dhaniel enjoying Matcha Milk Tea">
+        <div class="rating-stars">★★★★★</div>
+        <p class="name">— Ej Dhaniel.</p>
+        <p class="quote">"I tried the Matcha Milk Tea and it was heavenly! Perfect balance of flavor and sweetness. Highly recommend!"</p>
+      </div>
+
+      <div class="swiper-slide testimonial">
+        <img class="user-image" src="arron etoo.jpg" alt="Arron Magsalay drinking milk tea">
+        <div class="rating-stars">★★★★★</div>
+        <p class="name">— Arron Magsalay.</p>
+        <p class="quote">"They really care about quality. You can taste it in every sip. Plus, the store is super aesthetic — perfect for Instagram!"</p>
+      </div>
+
+      <div class="swiper-slide testimonial">
+        <img class="user-image" src="evan too.jpg" alt="Evan Christopher smiling with drink">
+        <div class="rating-stars">★★★★★</div>
+        <p class="name">— Evan Christopher.</p>
+        <p class="quote">"Fast service, great tea, and the tapioca pearls are always fresh and chewy. 10/10 would come again."</p>
+      </div>
+
+      <div class="swiper-slide testimonial">
+        <img class="user-image" src="matt to.jpg" alt="Matthew Mendoza">
+        <div class="rating-stars">★★★★★</div>
+        <p class="name">— Matthew Mendoza.</p>
+        <p class="quote">"BOBA & BREW never disappoints. Friendly staff, cozy vibes, and the drinks are consistently top-notch. I recommend the Matcha Latte with boba!"</p>
+      </div>
+
+      <div class="swiper-slide testimonial">
+        <img class="user-image" src="rani to.jpg" alt="Rani Andrew with Taro Milk Tea">
+        <div class="rating-stars">★★★★★</div>
+        <p class="name">— Rani Andrew.</p>
+        <p class="quote">"The Taro Milk Tea here is the best I’ve ever had. So creamy and flavorful! Plus, I love how Instagrammable the drinks look."</p>
+      </div>
+
+      <div class="swiper-slide testimonial">
+        <img class="user-image" src="mj to.jpg" alt="Mj Vilanueva enjoying drink">
+        <div class="rating-stars">★★★★★</div>
+        <p class="name">— Mj Vilanueva.</p>
+        <p class="quote">"I’m obsessed with the Wintermelon Milk Tea! And the delivery is fast and affordable. Highly recommend to my fellow milk tea lovers!"</p>
+      </div>
+
+      <div class="swiper-slide testimonial">
+        <img class="user-image" src="si papa too.jpg" alt="Romil Magsalay">
+        <div class="rating-stars">★★★★★</div>
+        <p class="name">— Romil Magsalay.</p>
+        <p class="quote">"Every drink I’ve tried from BOBA & BREW has been amazing. It’s my favorite milk tea shop ever!"</p>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section> <!-- end ng testimonial to -->
+
+
+<br><br><br><br>
+
+<!-- ===== Our menu ===== -->
+<section class="menu-section" id="menu">
+  <h2 class="section-title">Our Menu</h2>
+  <div class="section-content">
+    <ul class="menu-list">
+
+      <li class="menu-item">
+        <img src="681b3e21-8c98-4fd4-bd96-0d6ef5777e49.jpg" alt="Cookies and Cream milk tea" class="menu-image">
+        <h3 class="menu-title">Cookies and Cream</h3>
+        <p class="text">A creamy treat with chunks of cookies in every sip!</p>
+      </li>
+
+      <li class="menu-item">
+        <img src="caramel.jpg" alt="Caramel milk tea" class="menu-image">
+        <h3 class="menu-title">Caramel</h3>
+        <p class="text">Smooth and buttery caramel flavor with a rich, velvety finish in every sip.</p>
+      </li>
+
+      <li class="menu-item">
+        <img src="dark chocolate.jpg" alt="Dark Chocolate milk tea" class="menu-image">
+        <h3 class="menu-title">Dark Chocolate</h3>
+        <p class="text">Bold, bittersweet chocolate richness for true cocoa lovers.</p>
+      </li>
+
+      <li class="menu-item">
+        <img src="hokkaido.jpg" alt="Hokkaido milk tea" class="menu-image">
+        <h3 class="menu-title">Hokkaido</h3>
+        <p class="text">Creamy and velvety with a hint of sweet vanilla – a Japanese classic.</p>
+      </li>
+
+      <li class="menu-item">
+        <img src="matcha.jpg" alt="Matcha milk tea" class="menu-image">
+        <h3 class="menu-title">Matcha</h3>
+        <p class="text">Earthy, creamy, and energizing – a green tea dream in every sip.</p>
+      </li>
+
+      <li class="menu-item">
+        <img src="okinawa.jpg" alt="Okinawa brown sugar milk tea" class="menu-image">
+        <h3 class="menu-title">Okinawa</h3>
+        <p class="text">Sweet, toasty brown sugar goodness with a smooth, rich finish.</p>
+      </li>
+
+      <li class="menu-item">
+        <img src="red velvet.jpg" alt="Red Velvet milk tea" class="menu-image">
+        <h3 class="menu-title">Red Velvet</h3>
+        <p class="text">A velvety blend of cocoa and cream – like dessert in a cup.</p>
+      </li>
+
+      <li class="menu-item">
+        <img src="salted caramel.jpg" alt="Salted Caramel milk tea" class="menu-image">
+        <h3 class="menu-title">Salted Caramel</h3>
+        <p class="text">Sweet meets savory in this silky caramel blend with a hint of salt.</p>
+      </li>
+
+      <li class="menu-item">
+        <img src="taro.jpg" alt="Taro milk tea" class="menu-image">
+        <h3 class="menu-title">Taro</h3>
+        <p class="text">Creamy and nutty with a hint of vanilla – a purple classic.</p>
+      </li>
+
+      <li class="menu-item">
+        <img src="winter melon.jpg" alt="Wintermelon milk tea" class="menu-image">
+        <h3 class="menu-title">Wintermelon</h3>
+        <p class="text">Light, refreshing, and naturally sweet with a mellow melon twist.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+  <br><br>
+    <section class="menu-order" id="menuorder">
+      <br><br><br><br>
+    
+      <!-- Order Box -->
+      <div class="order-box">
+        <h2>Choose Your Order Type</h2>
+    
+        <select id="orderType" onchange="updateOptions()">
+          <option value="" disabled selected>Select Type</option>
+          <option value="milktea">Milktea</option>
+          <option value="combo">Combo Meals</option>
+        </select>
+    
+        <!-- Milk Tea Options -->
+        <div id="milkTeaOptions" style="display: none; margin-top: 15px;">
+          <h3>Choose Milktea Flavor</h3>
+          <select id="flavor">
+            <option value="Cookies and Cream">Cookies and Cream</option>
+            <option value="Wintermelon">Wintermelon</option>
+            <option value="Taro">Taro</option>
+            <option value="Matcha">Matcha</option>
+            <option value="Okinawa">Okinawa</option>
+            <option value="Red Velvet">Red Velvet</option>
+            <option value="Salted Caramel">Salted Caramel</option>
+            <option value="Hokkaido">Hokkaido</option>
+            <option value="Caramel">Caramel</option>
+            <option value="Dark Chocolate">Dark Chocolate</option>
+          </select>
+  
+          <!-- Size Selection -->
+          <h3 style="margin-top: 15px;">Choose Size</h3>
+          <select id="size">
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+            <option value="Extra Large">Extra Large</option>
+          </select>
+        </div>
+    
+        <!-- Combo Options -->
+        <div id="comboOptions" style="display: none; margin-top: 15px;">
+          <h3>Choose Combo Meals</h3>
+          <select id="combo">
+            <option value="Milk Tea + Fries">Milk Tea + Fries</option>
+            <option value="Milk Tea + Burger">Milk Tea + Burger</option>
+            <option value="Milk Tea + Nachos">Milk Tea + Nachos</option>
+            <option value="Milk Tea + Siomai">Milk Tea + Siomai</option>
+          </select>
+        </div>
+    
+        <!-- Add-ons -->
+        <div style="margin-top: 15px;">
+          <h3>Add-Ons</h3>
+          <label><input type="checkbox" value="Pearls"> Pearls</label><br>
+          <label><input type="checkbox" value="Cream Cheese"> Cream Cheese</label><br>
+          <label><input type="checkbox" value="Pudding"> Pudding</label><br>
+          <label><input type="checkbox" value="Coconut Jelly"> Coconut Jelly</label>
+        </div>
+      </div>
+      <!-- Order Now Button -->
+<div style="text-align: center; margin-top: 20px;">
+  <button onclick="placeOrder()" class="order-button">Order Now!</button>
+</div>
+    </section>
+        <section class="testimonials">
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <!-- swiperr slide to baka malito ka -->
+            </div>
+        
+            <!-- Navigation and Pagination: Inside lang ng .swiper container etooo -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="testimonials1">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <!-- swiperr slide to baka malito ka -->
+          </div>
+      
+          <!-- Navigation and Pagination: Inside lang ng .swiper container etooo -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+      
+      <section id="portfolio">
+        <h2>💼 Portfolio - BOBA & BREW COMPANY Website</h2>
+      
+        <div class="portfolio-container">
+      
+          <!-- Portfolio Project 1 -->
+          <div class="portfolio-card">
+            <h3>🥤BOBA & BREW COMPANY Website</h3>
+      
+            <div class="portfolio-details">
+              <p><strong>Project:</strong> BOOBA AND BREW MILKTEA SHOP WEBSITE<p>
+              <p><strong>Challenge:</strong> Build a mobile-friendly and visually engaging website for a local milk tea shop to enhance online presence and increase customer engagement.</p>
+              <p><strong>Solution:</strong>
+                <ul>
+                  <li>Designed a modern, clean website with a vibrant theme matching the milk tea shop's branding.</li>
+                  <li>Created a responsive menu section to showcase their premium drinks, with an elegant dark background.</li>
+                  <li>Integrated customer-friendly features like 'Order Now' and 'Contact Now' buttons to encourage engagement.</li>
+                  <li>Included a Swiper.js testimonial slider to showcase positive customer feedback.</li>
+                  <li>Optimized the website for mobile, tablet, and desktop viewing to ensure accessibility across all devices.</li>
+                </ul>
+              </p>
+            </div>
+      
+            <h4>💬 Client Testimonial:</h4>
+            <blockquote>
+              <em>"The new website has really helped us grow! It's user-friendly, looks amazing, and we saw an increase in online orders and inquiries. Thank you for bringing our brand online!"</em><br><br>
+              — Arron Magsalay and Ej Dhaniel, Owner of BOBA & BREW COMPANY
+            </blockquote>
+      
+            <h4>📈 Results:</h4>
+            <ul>
+              <li>+160% increase in customer inquiries within 2 months.</li>
+              <li>5 more social media engagement after linking website content to Instagram and Facebook.</li>
+              <li>30% growth in in-store traffic from online visitors.</li>
+              <li>Improved brand recognition and customer trust due to a sleek, professional online presence.</li>
+            </ul>
+          </div>
+      
+          <!-- Add more portfolio cards here if needed -->
+      
+        </div>
+      
+      </section>
+
+      <!-- BLOG SECTION START -->
+<section id="blog" style="background-color: #fefefe; padding: 4rem 2rem;">
+  <div style="text-align: center; margin-bottom: 2rem;">
+    <h2 style="font-size: 2.5rem; color: #4b2c20;">🥤BOOBA AND BREW</h2>
+    <p style="font-size: 1.1rem; color: #555;">Fresh updates, tasty tips, and everything BOBA!</p>
+  </div>
+
+  <div class="blog-container">
+    <!-- Blog Post 1 -->
+    <div class="blog-card">
+      <img src="hokkaido.jpg" alt="Summer Sips Drink" />
+      <div class="blog-content">
+        <h3>🍓 Summer Sips: New Fruity Flavors!</h3>
+        <p class="date">Posted: May 15, 2025</p>
+        <p>"Hokkaido meets fruity bliss! Try our Strawberry-Passion or Mango Burst Hokkaido blends—limited time only!"</p>
+        <a href="#">Read More →</a>
+      </div>
+    </div>
+
+    <!-- Blog Post 2 -->
+    <div class="blog-card">
+      <img src="okinawa.jpg" alt="Brown Sugar Milk Tea Process" />
+      <div class="blog-content">
+        <h3>👩‍🍳 Behind the Brew: Signature Brown Sugar</h3>
+        <p class="date">Posted: May 8, 2025</p>
+        <p>Okinawa just got fruitier! Sip our limited edition Strawberry-Passion or Mango Burst Okinawa blends before they’re gone!"</p>
+        <a href="#">Read More →</a>
+      </div>
+    </div>
+
+    <!-- Blog Post 3 -->
+    <div class="blog-card">
+      <img src="salted caramel.jpg" alt="Customer of the Month Evan Christopher" />
+      <div class="blog-content">
+        <h3>🎉 Customer of the Month: Bella</h3>
+        <p class="date">Posted: May 1, 2025</p>
+        <p>Sweet, salty, and now fruity! Our Salted Caramel Milk Tea gets a fresh twist with Strawberry-Passion Fusion or Mango Burst—only for a limited time!"</p>
+        <a href="#">Read More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- BLOG SECTION END -->
+
+<!-- CONTACT FORM START -->
+<section id="tae" style="padding: 4rem 2rem; background-color: #fff5ec;">
+  <div class="contact-container">
+    <h2 class="contact-title">📬 Contact Us</h2>
+    <p class="contact-subtitle">We’d love to hear from you! Send us a message anytime.</p>
+    
+    <form class="contact-form" action="#" method="post">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+              
+
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+<script src="script.js"></script>
+<script>
+  const navMenu = document.querySelector('.nav-menu');
+  document.querySelector('#menu-open-button').addEventListener('click', () => {
+    navMenu.classList.add('show');
+  });
+  document.querySelector('#menu-close-button').addEventListener('click', () => {
+    navMenu.classList.remove('show');
+  });
+    
+  const swiper = new Swiper('.swiper', { 
+  loop: true,  // Loop the slides infinitely
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true  // Make pagination clickable
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',  // Next button
+    prevEl: '.swiper-button-prev'   // Previous button
+  },
+  autoplay: {
+    delay: 4000,  // Delay between slide transitions (in milliseconds)
+    disableOnInteraction: false  // Autoplay won't be disabled on user interaction
+  },
+  slidesPerView: 1,  // Show only 1 slide at a time
+  spaceBetween: 0,  // No space between slides
+  breakpoints: {
+    0: {
+      slidesPerView: 1,  // 1 slide for mobile devices
+      spaceBetween: 0
+    },
+    768: {
+      slidesPerView: 1,  // 1 slide for tablet devices (or adjust as needed)
+      spaceBetween: 0
+    },
+    1024: {
+      slidesPerView: 1,  // 1 slide for larger screens
+      spaceBetween: 0
+    }
+  }
+});
+
+function updateOptions() {
+    const orderType = document.getElementById("orderType").value;
+    const milkTeaOptions = document.getElementById("milkTeaOptions");
+    const comboOptions = document.getElementById("comboOptions");
+
+    if (orderType === "milktea") {
+        milkTeaOptions.style.display = "block";
+        comboOptions.style.display = "none";
+    } else if (orderType === "combo") {
+        milkTeaOptions.style.display = "none";
+        comboOptions.style.display = "block";
+    } else {
+        milkTeaOptions.style.display = "none";
+        comboOptions.style.display = "none";
+    }
+}
+function placeOrder() {
+    alert("✅ Your order has been placed successfully! Thank you for choosing BOBA & BREW COMPANY 🧋");
+    window.open(window.location.origin + "kailangan github ang gamitin url ha", '_blank');
+  }
+
+  </script>
+</body>
+</html>	
